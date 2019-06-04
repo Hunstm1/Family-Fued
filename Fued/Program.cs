@@ -217,6 +217,17 @@ namespace Fued
             Question questions;
 
             StreamReader quest = new StreamReader("Questions.txt");
+            questions.question = quest.ReadLine();
+            questions.answer1 = quest.ReadLine();
+            questions.answer2 = quest.ReadLine();
+            questions.answer3 = quest.ReadLine();
+            questions.answer4 = quest.ReadLine();
+            questions.answer5 = quest.ReadLine();
+            questions.answer6 = quest.ReadLine();
+            questions.answer7 = quest.ReadLine();
+            
+
+
             
             
            
