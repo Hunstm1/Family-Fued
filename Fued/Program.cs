@@ -14,12 +14,24 @@ namespace Fued
         public string intrest;
 
     }
+    public struct Question
+    {
+        public string question;
+        public string answer1;
+        public string answer2;
+        public string answer3;
+        public string answer4;
+        public string answer5;
+        public string answer6;
+        public string answer7;
+    }
     class Program
     {
        static void Main()
         {
             Name[] names = new Name[43];
             Read(names);
+            Sort(names);
             bool again = true;
 
             while (again == true)
@@ -36,9 +48,10 @@ namespace Fued
                     case "2":
                        // Console.WriteLine("case 2");
                         Update(names);
+                        Sort(names);
                         break;
                     case "3":
-                        Console.WriteLine("case 3");
+                 //       Console.WriteLine("case 3");
                         Play();
                         break;
                 }
@@ -57,12 +70,14 @@ namespace Fued
             }
 
         }
+
         public static void Update(Name[] names)
         {
             
             Console.Clear();
 
             bool many = true;
+            int pos=0;
 
             while (many == true)
             {
@@ -80,7 +95,7 @@ namespace Fued
                         Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].intrest.PadRight(20)}|");
                         Console.WriteLine($"{ "".PadRight(68, '-')}");
                         count++;
-                        int pos = i;
+                        pos = i;
                         
                     }
                 }
@@ -103,10 +118,16 @@ namespace Fued
                 switch (Console.ReadLine())
                 {
                     case "Intrest":
+                        Console.WriteLine("Please enter what you want to change the Intrest to: ");
+                        names[pos].intrest = Console.ReadLine();
                         break;
                     case "First Name":
+                        Console.WriteLine("Please enter what you want to change the First Name to: ");
+                        names[pos].firstName = Console.ReadLine();
                         break;
                     case "Last Name":
+                        Console.WriteLine("Please enter what you want to change the Last Name to: ");
+                        names[pos].lastName = Console.ReadLine();
                         break;
                     default:
                         Console.WriteLine("Please select one of the list");
@@ -117,21 +138,55 @@ namespace Fued
                 if (Console.ReadLine().ToUpper() == "N")
                 {
                     again = false;
+                    Console.WriteLine("Would you like to update the file with these new changes? (Y/N)");
+                    if (Console.ReadLine().ToUpper() == "Y")
+                    {
+                        StreamWriter sw = new StreamWriter("familyFeud.txt");
+                        for (int i = 0; i < names.Length; i++)
+                        {
+                            sw.WriteLine(names[i].firstName);
+                            sw.WriteLine(names[i].lastName);
+                            sw.WriteLine(names[i].intrest);
+                        }
+                        sw.Close();
+                    }
                 }
             }
 
 
             Console.Clear();
         }
-        public static void Play()
-        {
 
+        public static void Sort(Name[] names)
+        {
+            for (int i = 0; i < names.Length - 1; i++)
+            {
+                for (int pos = 0; pos < names.Length - 1; pos++)
+                {
+                    if (names[pos + 1].lastName.CompareTo(names[pos].lastName) < 0)
+                    {
+                        Name temp = names[pos + 1];
+                        names[pos + 1] = names[pos];
+                        names[pos] = temp;
+                    }
+                }
+            }
         }
 
-
+        public static void Read(Name[] names)
+        {
+            StreamReader first = new StreamReader(@"familyFeud.txt");
+            for (int i = 0; i < 43; i++)
+            {
+                names[i].firstName = first.ReadLine();
+                names[i].lastName = first.ReadLine();
+                names[i].intrest = first.ReadLine();
+            }
+            first.Close();
+        }
         public static string Menu()
         {
-            
+
 
             Console.WriteLine("Family Fued");
             Console.WriteLine("===========");
@@ -156,22 +211,26 @@ namespace Fued
             }
             return menu;
         }
-
-
-
-
-
-        public static void Read(Name[] names)
+        public static void Play()
         {
-            StreamReader sr = new StreamReader(@"familyFeud.txt");
-            for (int i = 0; i < 43; i++)
-            {
-                names[i].firstName = sr.ReadLine();
-                names[i].lastName = sr.ReadLine();
-                names[i].intrest = sr.ReadLine();
-            }
-            sr.Close();
+            Console.Clear();
+            Question questions;
+
+            StreamReader quest = new StreamReader("Questions.txt");
+            
+            
+           
+
         }
+
+
+
+
+
+
+
+
+
 
     }
 }
