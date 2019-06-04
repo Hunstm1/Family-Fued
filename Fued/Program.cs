@@ -17,13 +17,8 @@ namespace Fued
     public struct Question
     {
         public string question;
-        public string answer1;
-        public string answer2;
-        public string answer3;
-        public string answer4;
-        public string answer5;
-        public string answer6;
-        public string answer7;
+        public string answer;
+
     }
     class Program
     {
@@ -204,7 +199,7 @@ namespace Fued
                 Console.WriteLine("Menu:" +
                                   "\n===========" +
                                   "\n 1:List Database of players" +
-                                  "\n 2:Update an entrey" +
+                                  "\n 2:Update an Entry" +
                                   "\n 3:Play" +
                                   "\n===========");
                 menu = Console.ReadLine();
@@ -214,22 +209,9 @@ namespace Fued
         public static void Play()
         {
             Console.Clear();
-            Question questions;
 
             StreamReader quest = new StreamReader("Questions.txt");
-            questions.question = quest.ReadLine();
-            questions.answer1 = quest.ReadLine();
-            questions.answer2 = quest.ReadLine();
-            questions.answer3 = quest.ReadLine();
-            questions.answer4 = quest.ReadLine();
-            questions.answer5 = quest.ReadLine();
-            questions.answer6 = quest.ReadLine();
-            questions.answer7 = quest.ReadLine();
-            
 
-
-            
-            
            
 
         }
