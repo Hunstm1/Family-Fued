@@ -1,51 +1,25 @@
-*
-Question One
-*
-Champions with Area Of Effect Crowd Control
-Leona
-(40)
-Nautilus
-(35)
-Zac
-(30)
-Rakan
-(25)
-Thresh
-(20)
-Morgana
-(15)
-Taric
-(10)
-*
-Question Two
-*
-Champions with Invulnerable Ablilities
-Yuumi
-(40)
-Taric
-(35)
-Kayle
-(30)
-Fizz
-(25)
-Lissandra
-(20)
-Bard
-(15)
-*
-Question Three
-*
-What would you build on Master YI in order
-Jungle Bloodrazer
-(40)
-Rageblade
-(35)
-Berserker's Greaves
-(30)
-Blade of the Runined King
-(25)
-Infinity Edge
-(20)
-Phantom Dancer
-(15)
-
+Champions with Area Of Effect Crowd Control?
+Leona (40)
+Nautilus (35)
+Zac (30)
+Rakan (25)
+Thresh (20)
+Morgana (15)
+Taric (10)
+%
+Champions with Invulnerable Ablilities?
+Yuumi (40)
+Taric (35)
+Kayle (30)
+Fizz (25)
+Lissandra (20)
+Bard (15)
+%
+What would you build on Master YI in order?
+Jungle Bloodrazer (40)
+Rageblade (35)
+Berserker's Greaves (30)
+Blade of the Runined King (25)
+Infinity Edge (20)
+Phantom Dancer (15)
+%

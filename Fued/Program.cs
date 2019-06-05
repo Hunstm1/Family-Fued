@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -209,11 +210,55 @@ namespace Fued
         public static void Play()
         {
             Console.Clear();
-
+            int guess=0;
+            String[] show = { "1", "2", "3", "4", "5", "6", "7" };
             StreamReader quest = new StreamReader("Questions.txt");
+            Question[] questions = new Question[7];
+            questions[0].question = quest.ReadLine();
+            for (int i = 0; i < 7; i++)
+            {
+                questions[i].answer = quest.ReadLine();
+            }
+            quest.Close();
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    Console.WriteLine(questions[i].answer);
+            //}
 
-           
+            Console.WriteLine($"| {"=".PadRight(43, '=')} |");
+            Console.WriteLine($"| {questions[0].answer.PadRight(20)} | {questions[4].answer.PadRight(20)} |");
+            Console.WriteLine($"| {questions[1].answer.PadRight(20)} | {questions[5].answer.PadRight(20)} |");
+            Console.WriteLine($"| {questions[2].answer.PadRight(20)} | {questions[6].answer.PadRight(20)} |");
+            Console.WriteLine($"| {questions[3].answer.PadRight(20)} | {"=".PadRight(20,'=')} |");
+            Console.WriteLine($"| {"=".PadRight(43, '=')} |");
+            Console.WriteLine("");
 
+
+
+            do
+            {
+                Console.WriteLine($"| {questions[0].question}");
+                Console.WriteLine($"| {"*".PadRight(43, '*')} |");
+                Console.WriteLine($"| {show[0].PadRight(20, '=')} | {show[4].PadRight(20, '=')} |");
+                Console.WriteLine($"| {show[1].PadRight(20, '=')} | {show[5].PadRight(20, '=')} |");
+                Console.WriteLine($"| {show[2].PadRight(20, '=')} | {show[6].PadRight(20, '=')} |");
+                Console.WriteLine($"| {show[3].PadRight(20, '=')} | {" = ".PadRight(20, '=')} |");
+                Console.WriteLine($"| {"*".PadRight(43, '*')} |");
+
+                Console.WriteLine(": ");
+                string user = Console.ReadLine();
+
+                for (int i = 0; i < questions.Length; i++)
+                {
+                    if (Regex.IsMatch(user,questions[i].answer))
+                    {
+                        show[i] = questions[i].answer;
+                    }
+                }
+
+
+
+            } while (guess != 3);
         }
 
 
