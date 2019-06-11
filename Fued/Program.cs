@@ -33,8 +33,7 @@ namespace Fued
             while (again == true)
             {
                 string menu = Menu();
-
-                Console.WriteLine(menu);
+               
                 switch (menu)
                 {
                     case "1":
@@ -51,9 +50,11 @@ namespace Fued
                         People(names);
                         Play();
                         break;
+                    default:
+                        again = false;
+                        break;
                 }
             }
-            Console.ReadLine();
         }
 
         public static void Listing(Name[] names)
@@ -183,41 +184,59 @@ namespace Fued
         }
         public static string Menu()
         {
+            string menu;
+            Console.Clear();
+            
+            
+            Console.WriteLine(@"  █████▒▄▄▄       ███▄ ▄███▓ ██▓ ██▓   ▓██   ██▓");
+            Console.WriteLine(@"▓██   ▒▒████▄    ▓██▒▀█▀ ██▒▓██▒▓██▒    ▒██  ██▒");
+            Console.WriteLine(@"▒████ ░▒██  ▀█▄  ▓██    ▓██░▒██▒▒██░     ▒██ ██░");
+            Console.WriteLine(@"░▓█▒  ░░██▄▄▄▄██ ▒██    ▒██ ░██░▒██░     ░ ▐██▓░");
+            Console.WriteLine(@"░▒█░    ▓█   ▓██▒▒██▒   ░██▒░██░░██████▒ ░ ██▒▓░");
+            Console.WriteLine(@" ▒ ░    ▒▒   ▓▒█░░ ▒░   ░  ░░▓  ░ ▒░▓  ░  ██▒▒▒ ");
+            Console.WriteLine(@" ░       ▒   ▒▒ ░░  ░      ░ ▒ ░░ ░ ▒  ░▓██ ░▒░ ");
+            Console.WriteLine(@" ░ ░     ░   ▒   ░      ░    ▒ ░  ░ ░   ▒ ▒ ░░  ");
+            Console.WriteLine(@"             ░  ░       ░    ░      ░  ░░ ░     ");
+            Console.WriteLine(@"                                        ░ ░     ");
+           
+            Console.WriteLine(@"  █████▒█    ██ ▓█████ ▓█████▄ ");
+            Console.WriteLine(@"▓██   ▒ ██  ▓██▒▓█   ▀ ▒██▀ ██▌");
+            Console.WriteLine(@"▒████ ░▓██  ▒██░▒███   ░██   █▌");
+            Console.WriteLine(@"░▓█▒  ░▓▓█  ░██░▒▓█  ▄ ░▓█▄   ▌");
+            Console.WriteLine(@"░▒█░   ▒▒█████▓ ░▒████▒░▒████▓ ");
+            Console.WriteLine(@" ▒ ░   ░▒▓▒ ▒ ▒ ░░ ▒░ ░ ▒▒▓  ▒ ");
+            Console.WriteLine(@" ░     ░░▒░ ░ ░  ░ ░  ░ ░ ▒  ▒ ");
+            Console.WriteLine(@" ░ ░    ░░░ ░ ░    ░    ░ ░  ░ ");
+            Console.WriteLine(@"          ░        ░  ░   ░    ");
+            Console.WriteLine(@"                        ░      ");
 
-
-            Console.WriteLine("Family Fued");
-            Console.WriteLine("===========");
-            Console.WriteLine("Menu:" +
-                              "\n===========" +
-                              "\n 1:List Database of players" +
-                              "\n 2:Update an entrey" +
-                              "\n 3:Play" +
-                              "\n===========");
-            string menu = Console.ReadLine();
-
-            while ((menu != "1") && (menu != "2") && (menu != "3"))
+            Thread.Sleep(2500);
+            Console.Clear();
+            do
             {
-                Console.WriteLine("Option not included, please try again.");
                 Console.WriteLine("Menu:" +
                                   "\n===========" +
                                   "\n 1:List Database of players" +
-                                  "\n 2:Update an Entry" +
+                                  "\n 2:Update an entrey" +
                                   "\n 3:Play" +
-                                  "\n===========");
-                menu = Console.ReadLine();
-            }
+                                  "\n 0:EXIT" +
+                                  "\n===========");              
+              menu = Console.ReadLine();
+            } while ((menu != "1") && (menu != "2") && (menu != "3") && (menu != "0"));
             return menu;
         }
         public static void Play()
         {
             Console.Clear();
-            bool check=true;
+            bool check = true;
             int winCheck = 0;
             int guess = 0;
             int pos = 0;
             int score = 0;
+            int totalScore = 0;
             bool won = false;
             String[] show = { "1", "2", "3", "4", "5", "6", "7" };
+            String[] showBase = { "1", "2", "3", "4", "5", "6", "7" };
             StreamReader quest = new StreamReader("Questions.txt");
             Question[] questions = new Question[7];
 
@@ -225,6 +244,18 @@ namespace Fued
 
 
             //Question one
+            Console.Clear();
+            Console.WriteLine(@"  █████   █    ██ ▓█████   ██████ ▄▄▄█████▓ ██▓ ▒█████   ███▄    █     ▒█████   ███▄    █ ▓█████ ");
+            Console.WriteLine(@"▒██▓  ██▒ ██  ▓██▒▓█   ▀ ▒██    ▒ ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █    ▒██▒  ██▒ ██ ▀█   █ ▓█   ▀ ");
+            Console.WriteLine(@"▒██▒  ██░▓██  ▒██░▒███   ░ ▓██▄   ▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒   ▒██░  ██▒▓██  ▀█ ██▒▒███   ");
+            Console.WriteLine(@"░██  █▀ ░▓▓█  ░██░▒▓█  ▄   ▒   ██▒░ ▓██▓ ░ ░██░▒██   ██░▓██▒  ▐▌██▒   ▒██   ██░▓██▒  ▐▌██▒▒▓█  ▄ ");
+            Console.WriteLine(@"░▒███▒█▄ ▒▒█████▓ ░▒████▒▒██████▒▒  ▒██▒ ░ ░██░░ ████▓▒░▒██░   ▓██░   ░ ████▓▒░▒██░   ▓██░░▒████▒");
+            Console.WriteLine(@"░░ ▒▒░ ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░▒ ▒▓▒ ▒ ░  ▒ ░░   ░▓  ░ ▒░▒░▒░ ░ ▒░   ▒ ▒    ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ░░ ▒░ ░");
+            Console.WriteLine(@" ░ ▒░  ░ ░░▒░ ░ ░  ░ ░  ░░ ░▒  ░ ░    ░     ▒ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░     ░ ▒ ▒░ ░ ░░   ░ ▒░ ░ ░  ░");
+            Console.WriteLine(@"   ░   ░  ░░░ ░ ░    ░   ░  ░  ░    ░       ▒ ░░ ░ ░ ▒     ░   ░ ░    ░ ░ ░ ▒     ░   ░ ░    ░   ");
+            Console.WriteLine(@"    ░       ░        ░  ░      ░            ░      ░ ░           ░        ░ ░           ░    ░  ░");
+            Break();
+
 
 
             questions[0].question = quest.ReadLine();
@@ -234,30 +265,18 @@ namespace Fued
             }
 
 
-
-
-
-
+            //Testing answers
             string[] quest1 = File.ReadAllLines("Q1Answers.txt");
             for (int i = 0; i < quest1.Length; i++)
             {
                 Console.WriteLine(quest1[i]);
             }
-
-
-            //Console.WriteLine($"| {"=".PadRight(43, '=')} |");
-            //Console.WriteLine($"| {questions[0].answer.PadRight(20)} | {questions[4].answer.PadRight(20)} |");
-            //Console.WriteLine($"| {questions[1].answer.PadRight(20)} | {questions[5].answer.PadRight(20)} |");
-            //Console.WriteLine($"| {questions[2].answer.PadRight(20)} | {questions[6].answer.PadRight(20)} |");
-            //Console.WriteLine($"| {questions[3].answer.PadRight(20)} | {"=".PadRight(20,'=')} |");
-            //Console.WriteLine($"| {"=".PadRight(43, '=')} |");
-            //Console.WriteLine("");
-
-
+            //Testing answers
 
             do
             {
-                Console.WriteLine($"| {questions[0].question}");
+                Console.Clear();
+                Console.WriteLine($"| {questions[0].question} |");
                 Console.WriteLine($"| {"*".PadRight(43, '*')} |");
                 Console.WriteLine($"| {show[0].PadRight(20, '=')} | {show[4].PadRight(20, '=')} |");
                 Console.WriteLine($"| {show[1].PadRight(20, '=')} | {show[5].PadRight(20, '=')} |");
@@ -265,6 +284,8 @@ namespace Fued
                 Console.WriteLine($"| {show[3].PadRight(20, '=')} | {" = ".PadRight(20, '=')} |");
                 Console.WriteLine($"| {"*".PadRight(43, '*')} |");
 
+                Console.WriteLine($"Your Score is :  {score}");
+                Console.WriteLine($"You have {3 - guess} guesses left");
                 Console.Write(": ");
                 string user = Console.ReadLine();
 
@@ -272,12 +293,9 @@ namespace Fued
                 {
                     if (quest1[i].ToLower().Equals(user.ToLower()))
                     {
-                        if (show[i] == questions[i].answer)
+                        if (show[i] != questions[i].answer)
                         {
-                            guess++;
-                        }
-                        else
-                        {
+                            Correct();
                             show[i] = questions[i].answer;
                             pos = i;
                             score = Score(pos, score);
@@ -288,6 +306,7 @@ namespace Fued
                 }
                 if (check == true)
                 {
+                    Wrong();
                     guess++;
                 }
                 else
@@ -301,20 +320,59 @@ namespace Fued
 
                 Console.WriteLine(score);
 
-            } while ((guess < 3)||(won==true));
+            } while ((guess < 3) || (won == true));
+            totalScore = totalScore + 175;
             won = false;
 
+            //Answers
 
-            //Question 2
+            for (int i = 0; i < questions.Length; i++)
+            {
+                show[i] = questions[i].answer;
+            }
+            Console.Clear();
+            Console.WriteLine($"| {questions[0].question} |");
+            Console.WriteLine($"| {"*".PadRight(43, '*')} |");
+            Console.WriteLine($"| {show[0].PadRight(20, '=')} | {show[4].PadRight(20, '=')} |");
+            Console.WriteLine($"| {show[1].PadRight(20, '=')} | {show[5].PadRight(20, '=')} |");
+            Console.WriteLine($"| {show[2].PadRight(20, '=')} | {show[6].PadRight(20, '=')} |");
+            Console.WriteLine($"| {show[3].PadRight(20, '=')} | {" = ".PadRight(20, '=')} |");
+            Console.WriteLine($"| {"*".PadRight(43, '*')} |");
+            Thread.Sleep(2500);
+            //Answers
+
+
+
+
+
+
+
+
+            Console.Clear();
+            Console.WriteLine(@"  █████   █    ██ ▓█████   ██████ ▄▄▄█████▓ ██▓ ▒█████   ███▄    █    ▄▄▄█████▓ █     █░ ▒█████  ");
+            Console.WriteLine(@"▒██▓  ██▒ ██  ▓██▒▓█   ▀ ▒██    ▒ ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █    ▓  ██▒ ▓▒▓█░ █ ░█░▒██▒  ██▒");
+            Console.WriteLine(@"▒██▒  ██░▓██  ▒██░▒███   ░ ▓██▄   ▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒   ▒ ▓██░ ▒░▒█░ █ ░█ ▒██░  ██▒");
+            Console.WriteLine(@"░██  █▀ ░▓▓█  ░██░▒▓█  ▄   ▒   ██▒░ ▓██▓ ░ ░██░▒██   ██░▓██▒  ▐▌██▒   ░ ▓██▓ ░ ░█░ █ ░█ ▒██   ██░");
+            Console.WriteLine(@"░▒███▒█▄ ▒▒█████▓ ░▒████▒▒██████▒▒  ▒██▒ ░ ░██░░ ████▓▒░▒██░   ▓██░     ▒██▒ ░ ░░██▒██▓ ░ ████▓▒░");
+            Console.WriteLine(@"░░ ▒▒░ ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░▒ ▒▓▒ ▒ ░  ▒ ░░   ░▓  ░ ▒░▒░▒░ ░ ▒░   ▒ ▒      ▒ ░░   ░ ▓░▒ ▒  ░ ▒░▒░▒░ ");
+            Console.WriteLine(@" ░ ▒░  ░ ░░▒░ ░ ░  ░ ░  ░░ ░▒  ░ ░    ░     ▒ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░       ░      ▒ ░ ░    ░ ▒ ▒░ ");
+            Console.WriteLine(@"   ░   ░  ░░░ ░ ░    ░   ░  ░  ░    ░       ▒ ░░ ░ ░ ▒     ░   ░ ░      ░        ░   ░  ░ ░ ░ ▒  ");
+            Console.WriteLine(@"    ░       ░        ░  ░      ░            ░      ░ ░           ░                 ░        ░ ░  ");
+
+
+
+            Break();
+
+    
             winCheck = 0;
-            show = { "1", "2", "3", "4", "5", "6", "7" };
+            Copy(show, showBase);
             guess = 0;
             questions[0].question = quest.ReadLine();
             for (int i = 0; i < 6; i++)
             {
                 questions[i].answer = quest.ReadLine();
             }
-           quest1 = File.ReadAllLines("Q2Answers.txt");
+            quest1 = File.ReadAllLines("Q2Answers.txt");
 
 
 
@@ -322,14 +380,17 @@ namespace Fued
 
             do
             {
+                Console.Clear();
                 Console.WriteLine($"| {questions[0].question}");
-                Console.WriteLine($"| {"*".PadRight(43, '*')} |");
-                Console.WriteLine($"| {show[0].PadRight(20, '=')} | {show[4].PadRight(20, '=')} |");
-                Console.WriteLine($"| {show[1].PadRight(20, '=')} | {show[5].PadRight(20, '=')} |");
-                Console.WriteLine($"| {show[2].PadRight(20, '=')} | {show[6].PadRight(20, '=')} |");
-                Console.WriteLine($"| {show[3].PadRight(20, '=')} | {" = ".PadRight(20, '=')} |");
-                Console.WriteLine($"| {"*".PadRight(43, '*')} |");
+                Console.WriteLine($"| {"*".PadRight(63, '*')} |");
+                Console.WriteLine($"| {show[0].PadRight(30, '=')} | {show[4].PadRight(30, '=')} |");
+                Console.WriteLine($"| {show[1].PadRight(30, '=')} | {show[5].PadRight(30, '=')} |");
+                Console.WriteLine($"| {show[2].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+                Console.WriteLine($"| {show[3].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+                Console.WriteLine($"| {"*".PadRight(63, '*')} |");
 
+                Console.WriteLine($"Your Score is :  {score}");
+                Console.WriteLine($"You have {3 - guess} guesses left");
                 Console.Write(": ");
                 string user = Console.ReadLine();
 
@@ -337,15 +398,13 @@ namespace Fued
                 {
                     if (quest1[i].ToLower().Equals(user.ToLower()))
                     {
-                        if (show[i] == questions[i].answer)
+                        if (show[i] != questions[i].answer)
                         {
-                            guess++;
-                        }
-                        else
-                        {
+                            Correct();
                             show[i] = questions[i].answer;
                             pos = i;
                             score = Score(pos, score);
+                            check = false;
                             winCheck++;
                         }
                     }
@@ -354,6 +413,7 @@ namespace Fued
 
                 if (check == true)
                 {
+                    Wrong();
                     guess++;
                 }
                 else
@@ -367,12 +427,52 @@ namespace Fued
                 Console.WriteLine(score);
 
             } while (guess < 3);
+            totalScore = totalScore + 165;
             won = false;
 
+            //Answers
+
+            for (int i = 0; i < quest1.Length; i++)
+            {
+                show[i] = questions[i].answer;
+            }
+            Console.Clear();
+            Console.WriteLine($"| {questions[0].question} |");
+            Console.WriteLine($"| {"*".PadRight(63, '*')} |");
+            Console.WriteLine($"| {show[0].PadRight(30, '=')} | {show[4].PadRight(30, '=')} |");
+            Console.WriteLine($"| {show[1].PadRight(30, '=')} | {show[5].PadRight(30, '=')} |");
+            Console.WriteLine($"| {show[2].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+            Console.WriteLine($"| {show[3].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+            Console.WriteLine($"| {"*".PadRight(63, '*')} |");
+            Thread.Sleep(2500);
+            //Answers
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+            Console.Clear();
+     
+            Console.WriteLine(@"  █████   █    ██ ▓█████   ██████ ▄▄▄█████▓ ██▓ ▒█████   ███▄    █    ▄▄▄█████▓ ██░ ██  ██▀███  ▓█████ ▓█████ ");
+            Console.WriteLine(@"▒██▓  ██▒ ██  ▓██▒▓█   ▀ ▒██    ▒ ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █    ▓  ██▒ ▓▒▓██░ ██▒▓██ ▒ ██▒▓█   ▀ ▓█   ▀ ");
+            Console.WriteLine(@"▒██▒  ██░▓██  ▒██░▒███   ░ ▓██▄   ▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒   ▒ ▓██░ ▒░▒██▀▀██░▓██ ░▄█ ▒▒███   ▒███   ");
+            Console.WriteLine(@"░██  █▀ ░▓▓█  ░██░▒▓█  ▄   ▒   ██▒░ ▓██▓ ░ ░██░▒██   ██░▓██▒  ▐▌██▒   ░ ▓██▓ ░ ░▓█ ░██ ▒██▀▀█▄  ▒▓█  ▄ ▒▓█  ▄ ");
+            Console.WriteLine(@"░▒███▒█▄ ▒▒█████▓ ░▒████▒▒██████▒▒  ▒██▒ ░ ░██░░ ████▓▒░▒██░   ▓██░     ▒██▒ ░ ░▓█▒░██▓░██▓ ▒██▒░▒████▒░▒████▒");
+            Console.WriteLine(@"░░ ▒▒░ ▒ ░▒▓▒ ▒ ▒ ░░ ▒░ ░▒ ▒▓▒ ▒ ░  ▒ ░░   ░▓  ░ ▒░▒░▒░ ░ ▒░   ▒ ▒      ▒ ░░    ▒ ░░▒░▒░ ▒▓ ░▒▓░░░ ▒░ ░░░ ▒░ ░");
+            Console.WriteLine(@" ░ ▒░  ░ ░░▒░ ░ ░  ░ ░  ░░ ░▒  ░ ░    ░     ▒ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░       ░     ▒ ░▒░ ░  ░▒ ░ ▒░ ░ ░  ░ ░ ░  ░");
+            Console.WriteLine(@"   ░   ░  ░░░ ░ ░    ░   ░  ░  ░    ░       ▒ ░░ ░ ░ ▒     ░   ░ ░      ░       ░  ░░ ░  ░░   ░    ░      ░   ");
+            Console.WriteLine(@"    ░       ░        ░  ░      ░            ░      ░ ░           ░              ░  ░  ░   ░        ░  ░   ░  ░");                                                                                  
+
+            Break();
 
 
 
@@ -380,7 +480,7 @@ namespace Fued
 
             //Question 3
             winCheck = 0;
-            show = { "1", "2", "3", "4", "5", "6", "7" };
+            Copy(show,showBase);
             guess = 0;
             questions[0].question = quest.ReadLine();
             for (int i = 0; i < 6; i++)
@@ -395,14 +495,17 @@ namespace Fued
 
             do
             {
+                Console.Clear();
                 Console.WriteLine($"| {questions[0].question}");
-                Console.WriteLine($"| {"*".PadRight(43, '*')} |");
-                Console.WriteLine($"| {show[0].PadRight(20, '=')} | {show[4].PadRight(20, '=')} |");
-                Console.WriteLine($"| {show[1].PadRight(20, '=')} | {show[5].PadRight(20, '=')} |");
-                Console.WriteLine($"| {show[2].PadRight(20, '=')} | {show[6].PadRight(20, '=')} |");
-                Console.WriteLine($"| {show[3].PadRight(20, '=')} | {" = ".PadRight(20, '=')} |");
-                Console.WriteLine($"| {"*".PadRight(43, '*')} |");
+                Console.WriteLine($"| {"*".PadRight(63, '*')} |");
+                Console.WriteLine($"| {show[0].PadRight(30, '=')} | {show[4].PadRight(30, '=')} |");
+                Console.WriteLine($"| {show[1].PadRight(30, '=')} | {show[5].PadRight(30, '=')} |");
+                Console.WriteLine($"| {show[2].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+                Console.WriteLine($"| {show[3].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+                Console.WriteLine($"| {"*".PadRight(63, '*')} |");
 
+                Console.WriteLine($"Your Score is :  {score}");
+                Console.WriteLine($"You have {3 - guess} guesses left");
                 Console.Write(": ");
                 string user = Console.ReadLine();
 
@@ -410,15 +513,13 @@ namespace Fued
                 {
                     if (quest1[i].ToLower().Equals(user.ToLower()))
                     {
-                        if (show[i] == questions[i].answer)
+                        if (show[i] != questions[i].answer)
                         {
-                            guess++;
-                        }
-                        else
-                        {
+                            Correct();
                             show[i] = questions[i].answer;
                             pos = i;
                             score = Score(pos, score);
+                            check = false;
                             winCheck++;
                         }
                     }
@@ -427,6 +528,7 @@ namespace Fued
 
                 if (check == true)
                 {
+                    Wrong();
                     guess++;
                 }
                 else
@@ -440,29 +542,89 @@ namespace Fued
                 Console.WriteLine(score);
 
             } while (guess < 3);
+            totalScore = totalScore + 165;
             won = false;
+            //Answers
+
+            for (int i = 0; i < quest1.Length; i++)
+            {
+                show[i] = questions[i].answer;
+            }
+            Console.Clear();
+            Console.WriteLine($"| {questions[0].question} |");
+            Console.WriteLine($"| {"*".PadRight(63, '*')} |");
+            Console.WriteLine($"| {show[0].PadRight(30, '=')} | {show[4].PadRight(30, '=')} |");
+            Console.WriteLine($"| {show[1].PadRight(30, '=')} | {show[5].PadRight(30, '=')} |");
+            Console.WriteLine($"| {show[2].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+            Console.WriteLine($"| {show[3].PadRight(30, '=')} | {" = ".PadRight(30, '=')} |");
+            Console.WriteLine($"| {"*".PadRight(63, '*')} |");
+            Thread.Sleep(2500);
+            //Answers
 
 
+            Console.Clear();
 
+            //Final score
+            Console.WriteLine("Your final score is..");
+            Console.WriteLine(score);
+            Console.WriteLine("Out of..");
+            Console.WriteLine(totalScore);
+            Console.WriteLine("--------------");
+            Console.WriteLine("You will be taken back to the main menu");
+            Thread.Sleep(4000);
 
+        }
 
+        public static void Break()
+        {
+            Thread.Sleep(2500);
+            Console.Clear();
+        }
+        public static void Correct()
+        {
+            Console.Clear();
+            
+            Console.WriteLine(@" ▄████▄   ▒█████   ██▀███   ██▀███  ▓█████  ▄████▄  ▄▄▄█████▓");
+            Console.WriteLine(@"▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▓██ ▒ ██▒▓█   ▀ ▒██▀ ▀█  ▓  ██▒ ▓▒");
+            Console.WriteLine(@"▒▓█    ▄ ▒██░  ██▒▓██ ░▄█ ▒▓██ ░▄█ ▒▒███   ▒▓█    ▄ ▒ ▓██░ ▒░");
+            Console.WriteLine(@"▒▓▓▄ ▄██▒▒██   ██░▒██▀▀█▄  ▒██▀▀█▄  ▒▓█  ▄ ▒▓▓▄ ▄██▒░ ▓██▓ ░ ");
+            Console.WriteLine(@"▒ ▓███▀ ░░ ████▓▒░░██▓ ▒██▒░██▓ ▒██▒░▒████▒▒ ▓███▀ ░  ▒██▒ ░ ");
+            Console.WriteLine(@"░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░ ▒▓ ░▒▓░░░ ▒░ ░░ ░▒ ▒  ░  ▒ ░░   ");
+            Console.WriteLine(@"  ░  ▒     ░ ▒ ▒░   ░▒ ░ ▒░  ░▒ ░ ▒░ ░ ░  ░  ░  ▒       ░    ");
+            Console.WriteLine(@"░        ░ ░ ░ ▒    ░░   ░   ░░   ░    ░   ░          ░      ");
+            Console.WriteLine(@"░ ░          ░ ░     ░        ░        ░  ░░ ░               ");
+            Console.WriteLine(@"░                                          ░                 ");
 
+            Thread.Sleep(2000);
 
+        }
+        public static void Wrong()
+        {
+            Console.Clear();
 
+            Console.WriteLine(@" █     █░ ██▀███   ▒█████   ███▄    █   ▄████ ");
+            Console.WriteLine(@"▓█░ █ ░█░▓██ ▒ ██▒▒██▒  ██▒ ██ ▀█   █  ██▒ ▀█▒");
+            Console.WriteLine(@"▒█░ █ ░█ ▓██ ░▄█ ▒▒██░  ██▒▓██  ▀█ ██▒▒██░▄▄▄░");
+            Console.WriteLine(@"░█░ █ ░█ ▒██▀▀█▄  ▒██   ██░▓██▒  ▐▌██▒░▓█  ██▓");
+            Console.WriteLine(@"░░██▒██▓ ░██▓ ▒██▒░ ████▓▒░▒██░   ▓██░░▒▓███▀▒");
+            Console.WriteLine(@"░ ▓░▒ ▒  ░ ▒▓ ░▒▓░░ ▒░▒░▒░ ░ ▒░   ▒ ▒  ░▒   ▒ ");
+            Console.WriteLine(@"  ▒ ░ ░    ░▒ ░ ▒░  ░ ▒ ▒░ ░ ░░   ░ ▒░  ░   ░ ");
+            Console.WriteLine(@"  ░   ░    ░░   ░ ░ ░ ░ ▒     ░   ░ ░ ░ ░   ░ ");
+            Console.WriteLine(@"    ░       ░         ░ ░           ░       ░ ");
 
-
+            Thread.Sleep(2000);
 
 
         }
-    
+        public static void Copy(string[] show, string[] showBase)
+        {
 
-
-
-
-
-
-
-
+            for (int i = 0; i < showBase.Length; i++)
+            {
+                show[i] = showBase[i];
+            }
+            
+        }
         public static int Score(int pos,int score)
         {
             switch (pos)
