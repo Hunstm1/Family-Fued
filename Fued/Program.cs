@@ -66,6 +66,8 @@ namespace Fued
                 Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].intrest.PadRight(20)}|");
                 Console.WriteLine($"{ "".PadRight(68, '-')}");
             }
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
 
         }
 
@@ -109,10 +111,15 @@ namespace Fued
             bool again = true;
             while (again == true)
             {
-                Console.WriteLine("What feild would you like to update?" +
-                                  "\n: Intrest" +
-                                  "\n: First Name" +
-                                  "\n: Last Name ");
+                do
+                {
+                    //Console.Clear();
+                    Console.WriteLine("What feild would you like to update?" +
+                                      "\n: Intrest" +
+                                      "\n: First Name" +
+                                      "\n: Last Name ");
+
+                } while ((Console.ReadLine().ToLower() != "intrest") || (Console.ReadLine().ToLower() != "first name") || (Console.ReadLine().ToLower() != "last name"));
                 switch (Console.ReadLine())
                 {
                     case "Intrest":
@@ -186,8 +193,40 @@ namespace Fued
         {
             string menu;
             Console.Clear();
-            
-            
+            Console.WriteLine(@"                                                                  ");
+            Console.WriteLine(@" ██▓    ▓█████ ▄▄▄       █    ██   ▄████ ▓█████                   ");
+            Console.WriteLine(@"▓██▒    ▓█   ▀▒████▄     ██  ▓██▒ ██▒ ▀█▒▓█   ▀                   ");
+            Console.WriteLine(@"▒██░    ▒███  ▒██  ▀█▄  ▓██  ▒██░▒██░▄▄▄░▒███                     ");
+            Console.WriteLine(@"▒██░    ▒▓█  ▄░██▄▄▄▄██ ▓▓█  ░██░░▓█  ██▓▒▓█  ▄                   ");
+            Console.WriteLine(@"░██████▒░▒████▒▓█   ▓██▒▒▒█████▓ ░▒▓███▀▒░▒████▒                  ");
+            Console.WriteLine(@"░ ▒░▓  ░░░ ▒░ ░▒▒   ▓▒█░░▒▓▒ ▒ ▒  ░▒   ▒ ░░ ▒░ ░                  ");
+            Console.WriteLine(@"░ ░ ▒  ░ ░ ░  ░ ▒   ▒▒ ░░░▒░ ░ ░   ░   ░  ░ ░  ░                  ");
+            Console.WriteLine(@"  ░ ░      ░    ░   ▒    ░░░ ░ ░ ░ ░   ░    ░                     ");
+            Console.WriteLine(@"    ░  ░   ░  ░     ░  ░   ░           ░    ░  ░                  ");
+            Console.WriteLine(@"                                                                  ");
+            Console.WriteLine(@" ▒█████    █████▒                                                 ");
+            Console.WriteLine(@"▒██▒  ██▒▓██   ▒                                                  ");
+            Console.WriteLine(@"▒██░  ██▒▒████ ░                                                  ");
+            Console.WriteLine(@"▒██   ██░░▓█▒  ░                                                  ");
+            Console.WriteLine(@"░ ████▓▒░░▒█░                                                     ");
+            Console.WriteLine(@"░ ▒░▒░▒░  ▒ ░                                                     ");
+            Console.WriteLine(@"  ░ ▒ ▒░  ░                                                       ");
+            Console.WriteLine(@"░ ░ ░ ▒   ░ ░                                                     ");
+            Console.WriteLine(@"    ░ ░                                                           ");
+            Console.WriteLine(@"                                                                  ");
+            Console.WriteLine(@" ██▓    ▓█████ ▓█████▄   ▄████ ▓█████  ███▄    █ ▓█████▄   ██████ ");
+            Console.WriteLine(@"▓██▒    ▓█   ▀ ▒██▀ ██▌ ██▒ ▀█▒▓█   ▀  ██ ▀█   █ ▒██▀ ██▌▒██    ▒ ");
+            Console.WriteLine(@"▒██░    ▒███   ░██   █▌▒██░▄▄▄░▒███   ▓██  ▀█ ██▒░██   █▌░ ▓██▄   ");
+            Console.WriteLine(@"▒██░    ▒▓█  ▄ ░▓█▄   ▌░▓█  ██▓▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌  ▒   ██▒");
+            Console.WriteLine(@"░██████▒░▒████▒░▒████▓ ░▒▓███▀▒░▒████▒▒██░   ▓██░░▒████▓ ▒██████▒▒");
+            Console.WriteLine(@"░ ▒░▓  ░░░ ▒░ ░ ▒▒▓  ▒  ░▒   ▒ ░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ ▒ ▒▓▒ ▒ ░");
+            Console.WriteLine(@"░ ░ ▒  ░ ░ ░  ░ ░ ▒  ▒   ░   ░  ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒ ░ ░▒  ░ ░");
+            Console.WriteLine(@"  ░ ░      ░    ░ ░  ░ ░ ░   ░    ░      ░   ░ ░  ░ ░  ░ ░  ░  ░  ");
+            Console.WriteLine(@"    ░  ░   ░  ░   ░          ░    ░  ░         ░    ░          ░  ");
+            Console.WriteLine(@"                ░                                 ░               ");
+            Thread.Sleep(2500);
+            Console.Clear();
+                  
             Console.WriteLine(@"  █████▒▄▄▄       ███▄ ▄███▓ ██▓ ██▓   ▓██   ██▓");
             Console.WriteLine(@"▓██   ▒▒████▄    ▓██▒▀█▀ ██▒▓██▒▓██▒    ▒██  ██▒");
             Console.WriteLine(@"▒████ ░▒██  ▀█▄  ▓██    ▓██░▒██▒▒██░     ▒██ ██░");
@@ -211,9 +250,10 @@ namespace Fued
             Console.WriteLine(@"                        ░      ");
 
             Thread.Sleep(2500);
-            Console.Clear();
+            
             do
             {
+                Console.Clear();
                 Console.WriteLine("Menu:" +
                                   "\n===========" +
                                   "\n 1:List Database of players" +
