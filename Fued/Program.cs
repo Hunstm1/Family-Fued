@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Media;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Fued
     {
         public string firstName;
         public string lastName;
-        public string intrest;
+        public string interest;
 
     }
     public struct Question
@@ -32,6 +33,9 @@ namespace Fued
 
             while (again == true)
             {
+                SoundPlayer player = new SoundPlayer(Path.Combine(Environment.CurrentDirectory, @"..\..\..\Objects\FF.wav"));
+                player.Stop();               
+                player.PlayLooping();
                 string menu = Menu();
                
                 switch (menu)
@@ -63,7 +67,7 @@ namespace Fued
             Console.WriteLine($"{ "".PadRight(68, '-')}");
             for (int i = 0; i < names.Length; i++)
             {
-                Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].intrest.PadRight(20)}|");
+                Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].interest.PadRight(20)}|");
                 Console.WriteLine($"{ "".PadRight(68, '-')}");
             }
             Console.WriteLine("Press enter to continue");
@@ -75,89 +79,102 @@ namespace Fued
         {
 
             Console.Clear();
-
+            string updateUser = "a";
             bool many = true;
             int pos = 0;
 
             while (many == true)
             {
-                int count = 0;
-                Console.WriteLine("Who would you like to update?");
-                string update = Console.ReadLine();
-
-
-
                 Console.WriteLine($"{ "".PadRight(68, '-')}");
                 for (int i = 0; i < names.Length; i++)
                 {
-                    if ((names[i].lastName.Contains(update)) || (names[i].firstName.Contains(update)) || (names[i].intrest.Contains(update)))
-                    {
-                        Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].intrest.PadRight(20)}|");
-                        Console.WriteLine($"{ "".PadRight(68, '-')}");
-                        count++;
-                        pos = i;
-
-                    }
+                    Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].interest.PadRight(20)}|");
+                    Console.WriteLine($"{ "".PadRight(68, '-')}");
                 }
-                if (count != 1)
-                {
-                    Console.WriteLine("Please be more direct with your search");
-                }
-                else
+                Console.WriteLine(" ");
+                int count = 0;
+                Console.WriteLine("Who would you like to update? (press enter to exit) ");
+                string update = Console.ReadLine();
+                if (update == "")
                 {
                     many = false;
                 }
-            }
-            bool again = true;
-            while (again == true)
-            {
-                do
+                else
                 {
-                    //Console.Clear();
-                    Console.WriteLine("What feild would you like to update?" +
-                                      "\n: Intrest" +
-                                      "\n: First Name" +
-                                      "\n: Last Name ");
 
-                } while ((Console.ReadLine().ToLower() != "intrest") || (Console.ReadLine().ToLower() != "first name") || (Console.ReadLine().ToLower() != "last name"));
-                switch (Console.ReadLine())
-                {
-                    case "Intrest":
-                        Console.WriteLine("Please enter what you want to change the Intrest to: ");
-                        names[pos].intrest = Console.ReadLine();
-                        break;
-                    case "First Name":
-                        Console.WriteLine("Please enter what you want to change the First Name to: ");
-                        names[pos].firstName = Console.ReadLine();
-                        break;
-                    case "Last Name":
-                        Console.WriteLine("Please enter what you want to change the Last Name to: ");
-                        names[pos].lastName = Console.ReadLine();
-                        break;
-                    default:
-                        Console.WriteLine("Please select one of the list");
-                        break;
-
-                }
-                Console.WriteLine("Would you like to change anything else about this person? (Y/N)");
-                if (Console.ReadLine().ToUpper() == "N")
-                {
-                    again = false;
-                    Console.WriteLine("Would you like to update the file with these new changes? (Y/N)");
-                    if (Console.ReadLine().ToUpper() == "Y")
+                    Console.WriteLine($"{ "".PadRight(68, '-')}");
+                    for (int i = 0; i < names.Length; i++)
                     {
-                        StreamWriter sw = new StreamWriter("familyFeud.txt");
-                        for (int i = 0; i < names.Length; i++)
+                        if ((names[i].lastName.ToLower().Contains(update.ToLower())) || (names[i].firstName.ToLower().Contains(update.ToLower())) || (names[i].interest.ToLower().Contains(update.ToLower())))
                         {
-                            sw.WriteLine(names[i].firstName);
-                            sw.WriteLine(names[i].lastName);
-                            sw.WriteLine(names[i].intrest);
+                            Console.Clear();
+                            Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].interest.PadRight(20)}|");
+                            Console.WriteLine($"{ "".PadRight(68, '-')}");
+                            count++;
+                            pos = i;
+
                         }
-                        sw.Close();
+                    }
+                    if (count != 1)
+                    {
+                        Console.WriteLine("Please be more direct with your search");
+                    }
+                    else
+                    {
+                        many = false;
+                    }
+
+                    bool again = true;
+                    while (again == true)
+                    {
+                        do
+                        {
+                            //Console.Clear();
+                            Console.WriteLine("What feild would you like to update?" +
+                                              "\n:Interest" +
+                                              "\n:First Name" +
+                                              "\n:Last Name ");
+                            updateUser = Console.ReadLine();
+                        } while ((updateUser.ToLower() != "interest") && (updateUser.ToLower() != "first name") && (updateUser.ToLower() != "last name"));
+                        switch (updateUser.ToLower())
+                        {
+                            case "interest":
+                                Console.WriteLine("Please enter what you want to change the interest to: ");
+                                names[pos].interest = Console.ReadLine();
+                                break;
+                            case "first name":
+                                Console.WriteLine("Please enter what you want to change the First Name to: ");
+                                names[pos].firstName = Console.ReadLine();
+                                break;
+                            case "last name":
+                                Console.WriteLine("Please enter what you want to change the Last Name to: ");
+                                names[pos].lastName = Console.ReadLine();
+                                break;
+                            default:
+                                Console.WriteLine("Please select one of the list");
+                                break;
+
+                        }
+                        Console.WriteLine("Would you like to change anything else about this person? (Y/N)");
+                        if (Console.ReadLine().ToUpper() == "N")
+                        {
+                            again = false;
+                            Console.WriteLine("Would you like to update the file with these new changes? (Y/N)");
+                            if (Console.ReadLine().ToUpper() == "Y")
+                            {
+                                StreamWriter sw = new StreamWriter(@"..\..\..\Objects\familyFeud.txt");
+                                for (int i = 0; i < names.Length; i++)
+                                {
+                                    sw.WriteLine(names[i].firstName);
+                                    sw.WriteLine(names[i].lastName);
+                                    sw.WriteLine(names[i].interest);
+                                }
+                                sw.Close();
+                            }
+                        }
                     }
                 }
             }
-
 
             Console.Clear();
         }
@@ -180,12 +197,12 @@ namespace Fued
 
         public static void Read(Name[] names)
         {
-            StreamReader first = new StreamReader(@"familyFeud.txt");
+            StreamReader first = new StreamReader(@"..\..\..\Objects\familyFeud.txt");
             for (int i = 0; i < 43; i++)
             {
                 names[i].firstName = first.ReadLine();
                 names[i].lastName = first.ReadLine();
-                names[i].intrest = first.ReadLine();
+                names[i].interest = first.ReadLine();
             }
             first.Close();
         }
@@ -255,12 +272,12 @@ namespace Fued
             {
                 Console.Clear();
                 Console.WriteLine("Menu:" +
-                                  "\n===========" +
+                                  "\n============================" +
                                   "\n 1:List Database of players" +
                                   "\n 2:Update an entrey" +
                                   "\n 3:Play" +
                                   "\n 0:EXIT" +
-                                  "\n===========");              
+                                  "\n============================");              
               menu = Console.ReadLine();
             } while ((menu != "1") && (menu != "2") && (menu != "3") && (menu != "0"));
             return menu;
@@ -277,7 +294,7 @@ namespace Fued
             bool won = false;
             String[] show = { "1", "2", "3", "4", "5", "6", "7" };
             String[] showBase = { "1", "2", "3", "4", "5", "6", "7" };
-            StreamReader quest = new StreamReader("Questions.txt");
+            StreamReader quest = new StreamReader(@"..\..\..\Objects\Questions.txt");
             Question[] questions = new Question[7];
 
 
@@ -306,7 +323,7 @@ namespace Fued
 
 
             //Testing answers
-            string[] quest1 = File.ReadAllLines("Q1Answers.txt");
+            string[] quest1 = File.ReadAllLines(@"..\..\..\Objects\Q1Answers.txt");
             for (int i = 0; i < quest1.Length; i++)
             {
                 Console.WriteLine(quest1[i]);
@@ -412,7 +429,7 @@ namespace Fued
             {
                 questions[i].answer = quest.ReadLine();
             }
-            quest1 = File.ReadAllLines("Q2Answers.txt");
+            quest1 = File.ReadAllLines(@"..\..\..\Objects\Q2Answers.txt");
 
 
 
@@ -527,7 +544,7 @@ namespace Fued
             {
                 questions[i].answer = quest.ReadLine();
             }
-            quest1 = File.ReadAllLines("Q3Answers.txt");
+            quest1 = File.ReadAllLines(@"..\..\..\Objects\Q3Answers.txt");
 
 
 
@@ -722,12 +739,12 @@ namespace Fued
             Console.WriteLine($"{ "".PadRight(68, '-')}");
             for (int i = 0; i < people.Length; i++)
             {
-                Console.WriteLine($"| {names[people[i]].firstName.PadRight(20)} | {names[people[i]].lastName.PadRight(20)} | {names[people[i]].intrest.PadRight(20)}|");
+                Console.WriteLine($"| {names[people[i]].firstName.PadRight(20)} | {names[people[i]].lastName.PadRight(20)} | {names[people[i]].interest.PadRight(20)}|");
                 Console.WriteLine($"{ "".PadRight(68, '-')}");
 
                 thing[i].firstName=names[people[i]].firstName;
                 thing[i].lastName=names[people[i]].lastName;
-                thing[i].intrest = names[people[i]].intrest;
+                thing[i].interest = names[people[i]].interest;
             }
             Console.WriteLine("Press enter to get your winner");
             Console.ReadLine();
@@ -735,7 +752,7 @@ namespace Fued
             Thread.Sleep(1000);
             Name person = thing[rand.Next(0, 10)];
             Console.WriteLine($"{ "".PadRight(68, '-')}");
-            Console.WriteLine($"| {person.firstName.PadRight(20)} | {person.lastName.PadRight(20)} | {person.intrest.PadRight(20)}|");
+            Console.WriteLine($"| {person.firstName.PadRight(20)} | {person.lastName.PadRight(20)} | {person.interest.PadRight(20)}|");
             Console.WriteLine($"{ "".PadRight(68, '-')}");
             Thread.Sleep(2000);
             return person;
