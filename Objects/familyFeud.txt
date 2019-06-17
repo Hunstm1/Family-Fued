@@ -1,4 +1,4 @@
-Muhammed
+﻿Muhammed
 Adam
 Loves Programming
 Nour
@@ -12,9 +12,6 @@ Andrews
 Loves Programming
 Samuel
 Barnes
-Loves Programming
-Jacob
-Beck
 Loves Programming
 Kieran
 Brett
@@ -51,7 +48,10 @@ Howe
 Loves Programming
 Taylor
 Hunsche
-Being Amazing 
+Loves Programming
+Jacob
+Beck
+Loves Programming
 Albertus
 Jordaan
 Loves Programming
@@ -83,7 +83,7 @@ Lucas
 Nyhof
 Loves Programming
 Liam
-O'Brien
+O Brien
 Loves Programming
 Nicholas
 Patchett

@@ -34,7 +34,7 @@ namespace Fued
             while (again == true)
             {
                 SoundPlayer player = new SoundPlayer(Path.Combine(Environment.CurrentDirectory, @"..\..\..\Objects\FF.wav"));
-                player.Stop();               
+                player.Stop();
                 player.PlayLooping();
                 string menu = Menu();
                
@@ -70,7 +70,7 @@ namespace Fued
                 Console.WriteLine($"|{names[i].firstName.PadRight(20)} | {names[i].lastName.PadRight(20)} | {names[i].interest.PadRight(20)}|");
                 Console.WriteLine($"{ "".PadRight(68, '-')}");
             }
-            Console.WriteLine("Press enter to continue");
+            Console.WriteLine("Press ENTER to continue");
             Console.ReadLine();
 
         }
@@ -93,7 +93,7 @@ namespace Fued
                 }
                 Console.WriteLine(" ");
                 int count = 0;
-                Console.WriteLine("Who would you like to update? (press enter to exit) ");
+                Console.WriteLine("Who would you like to update? (press ENTER to exit) ");
                 string update = Console.ReadLine();
                 if (update == "")
                 {
@@ -130,7 +130,7 @@ namespace Fued
                         do
                         {
                             //Console.Clear();
-                            Console.WriteLine("What feild would you like to update?" +
+                            Console.WriteLine("What field would you like to update?" +
                                               "\n:Interest" +
                                               "\n:First Name" +
                                               "\n:Last Name ");
@@ -139,7 +139,7 @@ namespace Fued
                         switch (updateUser.ToLower())
                         {
                             case "interest":
-                                Console.WriteLine("Please enter what you want to change the interest to: ");
+                                Console.WriteLine("Please enter what you want to change the Interest to: ");
                                 names[pos].interest = Console.ReadLine();
                                 break;
                             case "first name":
@@ -151,7 +151,7 @@ namespace Fued
                                 names[pos].lastName = Console.ReadLine();
                                 break;
                             default:
-                                Console.WriteLine("Please select one of the list");
+                                Console.WriteLine("Please select one option from the list");
                                 break;
 
                         }
@@ -210,6 +210,7 @@ namespace Fued
         {
             string menu;
             Console.Clear();
+            Console.WriteLine("");
             Console.WriteLine(@"                                                                  ");
             Console.WriteLine(@" ██▓    ▓█████ ▄▄▄       █    ██   ▄████ ▓█████                   ");
             Console.WriteLine(@"▓██▒    ▓█   ▀▒████▄     ██  ▓██▒ ██▒ ▀█▒▓█   ▀                   ");
@@ -243,7 +244,8 @@ namespace Fued
             Console.WriteLine(@"                ░                                 ░               ");
             Thread.Sleep(2500);
             Console.Clear();
-                  
+
+            Console.WriteLine("");
             Console.WriteLine(@"  █████▒▄▄▄       ███▄ ▄███▓ ██▓ ██▓   ▓██   ██▓");
             Console.WriteLine(@"▓██   ▒▒████▄    ▓██▒▀█▀ ██▒▓██▒▓██▒    ▒██  ██▒");
             Console.WriteLine(@"▒████ ░▒██  ▀█▄  ▓██    ▓██░▒██▒▒██░     ▒██ ██░");
@@ -271,10 +273,10 @@ namespace Fued
             do
             {
                 Console.Clear();
-                Console.WriteLine("Menu:" +
+                Console.WriteLine($"{"Main Menu".PadLeft(18)}" +
                                   "\n============================" +
-                                  "\n 1:List Database of players" +
-                                  "\n 2:Update an entrey" +
+                                  "\n 1:View Database of Players" +
+                                  "\n 2:Update an Entry" +
                                   "\n 3:Play" +
                                   "\n 0:EXIT" +
                                   "\n============================");              
@@ -302,6 +304,7 @@ namespace Fued
 
             //Question one
             Console.Clear();
+            Console.WriteLine("");
             Console.WriteLine(@"  █████   █    ██ ▓█████   ██████ ▄▄▄█████▓ ██▓ ▒█████   ███▄    █     ▒█████   ███▄    █ ▓█████ ");
             Console.WriteLine(@"▒██▓  ██▒ ██  ▓██▒▓█   ▀ ▒██    ▒ ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █    ▒██▒  ██▒ ██ ▀█   █ ▓█   ▀ ");
             Console.WriteLine(@"▒██▒  ██░▓██  ▒██░▒███   ░ ▓██▄   ▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒   ▒██░  ██▒▓██  ▀█ ██▒▒███   ");
@@ -364,7 +367,7 @@ namespace Fued
                 if (check == true)
                 {
                     Wrong();
-                    guess++;
+                   // guess++;
                 }
                 else
                 {
@@ -374,6 +377,7 @@ namespace Fued
                 {
                     won = true;
                 }
+                guess++;
 
                 Console.WriteLine(score);
 
@@ -406,6 +410,7 @@ namespace Fued
 
 
             Console.Clear();
+            Console.WriteLine("");
             Console.WriteLine(@"  █████   █    ██ ▓█████   ██████ ▄▄▄█████▓ ██▓ ▒█████   ███▄    █    ▄▄▄█████▓ █     █░ ▒█████  ");
             Console.WriteLine(@"▒██▓  ██▒ ██  ▓██▒▓█   ▀ ▒██    ▒ ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █    ▓  ██▒ ▓▒▓█░ █ ░█░▒██▒  ██▒");
             Console.WriteLine(@"▒██▒  ██░▓██  ▒██░▒███   ░ ▓██▄   ▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒   ▒ ▓██░ ▒░▒█░ █ ░█ ▒██░  ██▒");
@@ -471,7 +476,7 @@ namespace Fued
                 if (check == true)
                 {
                     Wrong();
-                    guess++;
+                  //  guess++;
                 }
                 else
                 {
@@ -482,9 +487,11 @@ namespace Fued
                     won = true;
                 }
                 Console.WriteLine(score);
+                guess++;
 
             } while (guess < 3);
             totalScore = totalScore + 165;
+
             won = false;
 
             //Answers
@@ -518,7 +525,7 @@ namespace Fued
 
 
             Console.Clear();
-     
+            Console.WriteLine("");
             Console.WriteLine(@"  █████   █    ██ ▓█████   ██████ ▄▄▄█████▓ ██▓ ▒█████   ███▄    █    ▄▄▄█████▓ ██░ ██  ██▀███  ▓█████ ▓█████ ");
             Console.WriteLine(@"▒██▓  ██▒ ██  ▓██▒▓█   ▀ ▒██    ▒ ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █    ▓  ██▒ ▓▒▓██░ ██▒▓██ ▒ ██▒▓█   ▀ ▓█   ▀ ");
             Console.WriteLine(@"▒██▒  ██░▓██  ▒██░▒███   ░ ▓██▄   ▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒   ▒ ▓██░ ▒░▒██▀▀██░▓██ ░▄█ ▒▒███   ▒███   ");
@@ -586,7 +593,7 @@ namespace Fued
                 if (check == true)
                 {
                     Wrong();
-                    guess++;
+                    //guess++;
                 }
                 else
                 {
@@ -597,6 +604,7 @@ namespace Fued
                     won = true;
                 }
                 Console.WriteLine(score);
+                guess++;
 
             } while (guess < 3);
             totalScore = totalScore + 165;
@@ -624,10 +632,10 @@ namespace Fued
             //Final score
             Console.WriteLine("Your final score is..");
             Console.WriteLine(score);
-            Console.WriteLine("Out of..");
+            Console.WriteLine("Out of...");
             Console.WriteLine(totalScore);
             Console.WriteLine("--------------");
-            Console.WriteLine("You will be taken back to the main menu");
+            Console.WriteLine("You will be taken back to the Main Menu");
             Thread.Sleep(4000);
 
         }
@@ -640,7 +648,7 @@ namespace Fued
         public static void Correct()
         {
             Console.Clear();
-            
+            Console.WriteLine("");
             Console.WriteLine(@" ▄████▄   ▒█████   ██▀███   ██▀███  ▓█████  ▄████▄  ▄▄▄█████▓");
             Console.WriteLine(@"▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▓██ ▒ ██▒▓█   ▀ ▒██▀ ▀█  ▓  ██▒ ▓▒");
             Console.WriteLine(@"▒▓█    ▄ ▒██░  ██▒▓██ ░▄█ ▒▓██ ░▄█ ▒▒███   ▒▓█    ▄ ▒ ▓██░ ▒░");
@@ -658,7 +666,7 @@ namespace Fued
         public static void Wrong()
         {
             Console.Clear();
-
+            Console.WriteLine("");
             Console.WriteLine(@" █     █░ ██▀███   ▒█████   ███▄    █   ▄████ ");
             Console.WriteLine(@"▓█░ █ ░█░▓██ ▒ ██▒▒██▒  ██▒ ██ ▀█   █  ██▒ ▀█▒");
             Console.WriteLine(@"▒█░ █ ░█ ▓██ ░▄█ ▒▒██░  ██▒▓██  ▀█ ██▒▒██░▄▄▄░");
@@ -708,7 +716,7 @@ namespace Fued
                     score = score + 10;
                     break;
                 default:
-                    Console.WriteLine("not an option");
+                    Console.WriteLine("Not an option");
                     break;
             }
             return score;
@@ -735,7 +743,7 @@ namespace Fued
 
             }
 
-            Console.WriteLine("Here are your 10 Finilests");
+            Console.WriteLine("Here are the 10 finalists of the draw...");
             Console.WriteLine($"{ "".PadRight(68, '-')}");
             for (int i = 0; i < people.Length; i++)
             {
@@ -746,9 +754,9 @@ namespace Fued
                 thing[i].lastName=names[people[i]].lastName;
                 thing[i].interest = names[people[i]].interest;
             }
-            Console.WriteLine("Press enter to get your winner");
+            Console.WriteLine("Press enter to see the winner of the draw!");
             Console.ReadLine();
-            Console.WriteLine("Your Winner is.... ");
+            Console.WriteLine("Your Winner is... ");
             Thread.Sleep(1000);
             Name person = thing[rand.Next(0, 10)];
             Console.WriteLine($"{ "".PadRight(68, '-')}");
